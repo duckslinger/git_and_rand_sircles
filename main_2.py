@@ -1,4 +1,3 @@
-from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from random import randint
 from PyQt5.QtGui import QPainter, QBrush, QColor
@@ -7,14 +6,13 @@ import sys
 from Ui import Ui_MainWindow
 
 
-
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
+        self.setupUi(self)
         self.initUi()
 
     def initUi(self):
-        uic.loadUi("Ui.ui", self)
 
         self.pushButton.clicked.connect(self.draw_circle)
         self.show()
@@ -35,9 +33,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.update()
 
 
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
     sys.exit(app.exec())
-
